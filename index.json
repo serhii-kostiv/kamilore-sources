@@ -1,0 +1,14 @@
+{
+  "name": "Kamilore Sources",
+  "sdkVersion": "^1.0.0",
+  "plugins": [
+    {
+      "id": "ranobe-me",
+      "name": "Ranobe.me",
+      "version": "1.0.0",
+      "language": "ru",
+      "packUrl": "https://raw.githubusercontent.com/serhii-kostiv/kamilore-sources/main/pack.json",
+      "iconUrl": null
+    }
+  ]
+}

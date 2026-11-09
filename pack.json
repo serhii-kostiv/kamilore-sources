@@ -1,0 +1,55 @@
+{
+  "id": "ranobe-me",
+  "name": "Ranobe.me",
+  "version": "1.0.0",
+  "sdkVersion": "^1.0.0",
+  "kind": "declarative",
+  "language": "ru",
+  "baseUrl": "https://ranobe.me",
+  "allowedHosts": ["ranobe.me"],
+  "encoding": "utf-8",
+  "headers": {
+    "User-Agent": "KamiloreSource/1.0"
+  },
+  "capabilities": {
+    "search": true,
+    "browse": false,
+    "latestUpdates": false
+  },
+  "trustLevel": "community",
+  "template": null,
+  "urls": {
+    "novel": "/ranobe{id}",
+    "chapter": "/ranobe{novelId}/{chapterId}"
+  },
+  "ids": {
+    "novel": "^/ranobe([0-9]+)/?$",
+    "chapter": "^/ranobe[0-9]+/([0-9]+)/?$"
+  },
+  "selectors": {
+    "search": {
+      "url": "/index.php?section=search&str={query}&page={page}",
+      "item": ".FicTable",
+      "title": ".FicTable_Title > a",
+      "link": ".FicTable_Title > a@href",
+      "cover": ".FicTable_Cover img@src"
+    },
+    "details": {
+      "title": "h1",
+      "author": ".FicHeadRight .tr:has(.title:contains(\"Автор\")) .content",
+      "cover": ".FicCover img@src",
+      "description": ".summary_text_fic3",
+      "status": null,
+      "chapterList": "ul.FicContents > li",
+      "chapterLink": ".FicContentsChapterName a@href",
+      "chapterTitle": ".FicContentsChapterName a",
+      "chapterDate": null,
+      "chapterOrder": "asc"
+    },
+    "chapter": {
+      "title": ".ReadContent h1",
+      "content": "div.chapter",
+      "remove": [".read_nav_button", ".bottom-banner"]
+    }
+  }
+}
