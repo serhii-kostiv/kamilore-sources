@@ -1,7 +1,7 @@
 {
   "id": "ranobe-me",
   "name": "Ranobe.me",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "sdkVersion": "^1.0.0",
   "kind": "declarative",
   "language": "ru",
@@ -13,7 +13,7 @@
   },
   "capabilities": {
     "search": true,
-    "browse": false,
+    "browse": true,
     "latestUpdates": false
   },
   "trustLevel": "community",
@@ -29,6 +29,13 @@
   "selectors": {
     "search": {
       "url": "/index.php?section=search&str={query}&page={page}",
+      "item": ".FicTable",
+      "title": ".FicTable_Title > a",
+      "link": ".FicTable_Title > a@href",
+      "cover": ".FicTable_Cover img@src"
+    },
+    "browse": {
+      "url": "/catalog?page={page}",
       "item": ".FicTable",
       "title": ".FicTable_Title > a",
       "link": ".FicTable_Title > a@href",
