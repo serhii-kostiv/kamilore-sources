@@ -1,7 +1,7 @@
 {
   "id": "ranobe-me",
   "name": "Ranobe.me",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "sdkVersion": "^1.0.0",
   "kind": "declarative",
   "language": "ru",
@@ -14,7 +14,7 @@
   "capabilities": {
     "search": true,
     "browse": true,
-    "latestUpdates": false
+    "latestUpdates": true
   },
   "trustLevel": "community",
   "template": null,
@@ -26,6 +26,19 @@
     "novel": "^/ranobe([0-9]+)/?$",
     "chapter": "^/ranobe[0-9]+/([0-9]+)/?$"
   },
+  "filters": [
+    {
+      "type": "Picker",
+      "id": "sort",
+      "label": "Сортировка",
+      "options": [
+        { "label": "По умолчанию", "value": "" },
+        { "label": "По названию", "value": "title" },
+        { "label": "По дате", "value": "date" }
+      ],
+      "defaultValue": ""
+    }
+  ],
   "selectors": {
     "search": {
       "url": "/index.php?section=search&str={query}&page={page}",
@@ -35,7 +48,14 @@
       "cover": ".FicTable_Cover img@src"
     },
     "browse": {
-      "url": "/catalog?page={page}",
+      "url": "/catalog?page={page}&sort={sort}",
+      "item": ".FicTable",
+      "title": ".FicTable_Title > a",
+      "link": ".FicTable_Title > a@href",
+      "cover": ".FicTable_Cover img@src"
+    },
+    "latestUpdates": {
+      "url": "/catalog?sort=date&page={page}",
       "item": ".FicTable",
       "title": ".FicTable_Title > a",
       "link": ".FicTable_Title > a@href",
